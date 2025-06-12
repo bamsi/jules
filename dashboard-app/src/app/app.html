@@ -1,2 +1,5 @@
-<app-navigation-menu></app-navigation-menu>
-<router-outlet></router-outlet>
+<app-side-nav-menu (collapseStateChanged)="onMenuCollapseChanged($event)"></app-side-nav-menu>
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
+<!-- <app-navigation-menu></app-navigation-menu> -->

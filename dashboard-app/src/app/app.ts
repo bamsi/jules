@@ -1,13 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core'; // Added HostBinding
 import { RouterOutlet } from '@angular/router';
-import { NavigationMenu } from './navigation-menu/navigation-menu';
+import { SideNavMenuComponent } from './side-nav-menu/side-nav-menu.component'; // Corrected path
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavigationMenu],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+  standalone: true,
+  imports: [RouterOutlet, SideNavMenuComponent, CommonModule], // Added CommonModule and SideNavMenuComponent
+  templateUrl: './app.html', // Corrected from app.component.html
+  styleUrl: './app.scss', // Corrected from app.component.scss
 })
-export class App {
-  protected title = 'dashboard-app';
+export class AppComponent {
+  title = 'dashboard-app';
+  isMenuCollapsed = false; // Default state
+
+  // Apply a class to the host element (app-root) for global styling adjustments
+  @HostBinding('class.menu-is-collapsed') get menuCollapsed() {
+    return this.isMenuCollapsed;
+  }
+
+  onMenuCollapseChanged(collapsed: boolean) {
+    this.isMenuCollapsed = collapsed;
+  }
 }
