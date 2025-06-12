@@ -1,10 +1,10 @@
 :host {
   display: block;
-  height: 100vh; // Full height
-  position: fixed; // Fixed position
-  left: 0;
-  top: 0;
-  z-index: 1000; // Ensure it's above other content
+  height: 100%; // Full height of its parent (.app-body-container)
+  /* position: fixed; */ // Removed
+  /* left: 0; */ // Removed
+  /* top: 0; */ // Removed
+  /* z-index: 1000; */ // Removed
   transition: width 0.3s ease;
 }
 
