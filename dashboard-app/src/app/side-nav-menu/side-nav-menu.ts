@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
   styleUrls: ['./side-nav-menu.scss']
 })
 export class SideNavMenuComponent {
-  isCollapsed = false;
+  isCollapsed = true;
   @Output() collapseStateChanged = new EventEmitter<boolean>();
 
   toggleCollapse() {

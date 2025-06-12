@@ -1,7 +1,7 @@
 import { Component, HostBinding } from '@angular/core'; // Added HostBinding
 import { RouterOutlet } from '@angular/router';
-import { SideNavMenuComponent } from './side-nav-menu/side-nav-menu.component'; // Corrected path
 import { CommonModule } from '@angular/common';
+import { SideNavMenuComponent } from './side-nav-menu/side-nav-menu';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   title = 'dashboard-app';
-  isMenuCollapsed = false; // Default state
+  isMenuCollapsed = true; // Default state
 
   // Apply a class to the host element (app-root) for global styling adjustments
   @HostBinding('class.menu-is-collapsed') get menuCollapsed() {
