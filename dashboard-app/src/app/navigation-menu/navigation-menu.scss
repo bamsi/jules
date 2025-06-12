@@ -1,0 +1,42 @@
+@import '../../styles.scss'; // Import global variables/mixins if any were defined (not in this case yet)
+
+.fancy-menu {
+  background: linear-gradient(90deg, #4a00e0, #8e2de2); // Purple gradient
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); // Deeper shadow for more pop
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+
+    li {
+      display: inline-block;
+      margin: 0 15px; // Adjusted margin
+
+      a {
+        color: white;
+        text-decoration: none;
+        padding: 12px 20px; // Increased padding
+        border-radius: 25px; // More rounded buttons
+        font-weight: 500; // Bolder text
+        font-size: 1.1em; // Slightly larger font
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.2);
+          transform: translateY(-2px); // Slight lift on hover
+          box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        &.active {
+          background-color: rgba(255, 255, 255, 0.3); // More pronounced active state
+          box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
