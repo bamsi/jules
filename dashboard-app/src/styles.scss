@@ -1,12 +1,21 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 /* Global Styles */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 body {
-  margin: 0;
   font-family: 'Roboto', sans-serif;
   background-color: #f4f7f6;
   color: #333;
   line-height: 1.6;
+  height: 100%; /* Ensure body also takes full height if not covered by html,body for some reason */
+  /* margin: 0; is removed as it's handled by html, body */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -31,14 +40,6 @@ a:hover {
 
 // Specific styles for dashboard component containers if needed globally
 // For example, to ensure they take up space or have some default padding
-app-clinical-dashboard, app-hr-dashboard {
-  display: block; // Ensure they behave as blocks
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  margin: 20px; // Add some margin around dashboard components
-}
 
 // Placeholder for Superset embedded iframe styling if direct targeting is needed
 // This might be tricky as it's an iframe, but we can style its container.

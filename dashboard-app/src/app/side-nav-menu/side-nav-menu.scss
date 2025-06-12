@@ -1,0 +1,103 @@
+:host {
+  display: block;
+  height: 100vh; // Full height
+  position: fixed; // Fixed position
+  left: 0;
+  top: 0;
+  z-index: 1000; // Ensure it's above other content
+  transition: width 0.3s ease;
+}
+
+.side-nav {
+  height: 100%;
+  width: 250px; // Expanded width
+  background-color: #2c3e50; // Dark background
+  color: white;
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  transition: width 0.3s ease;
+  overflow: hidden; // Hide text when collapsed
+
+  &.collapsed {
+    width: 70px; // Collapsed width (icon only)
+  }
+
+  .toggle-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto 20px auto; // Center the button
+    padding: 10px;
+    font-size: 24px; // Icon size (mat-icon will inherit this or use its own sizing)
+
+    mat-icon { // Changed selector
+      font-size: 28px; // Ensure icon size is consistent
+      // For mat-icon, you might need to adjust vertical-align or line-height
+      // if it doesn't align as expected.
+      vertical-align: middle;
+    }
+
+    &:hover {
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 50%;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      a {
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.3s ease, padding-left 0.3s ease;
+        white-space: nowrap;
+
+        mat-icon { // Changed selector
+          margin-right: 15px;
+          font-size: 24px;
+          vertical-align: middle;
+          transition: margin-right 0.3s ease;
+        }
+
+        .link-text {
+          opacity: 1;
+          transition: opacity 0.2s ease;
+        }
+
+        &:hover {
+          background-color: #34495e;
+        }
+
+        &.active {
+          background-color: #1abc9c;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  // Styles for collapsed state
+  &.collapsed {
+    ul li a {
+      justify-content: center;
+      padding-left: 0;
+      padding-right: 0;
+
+      mat-icon { // Changed selector
+        margin-right: 0;
+      }
+      .link-text {
+        opacity: 0;
+        display: none;
+      }
+    }
+  }
+}
