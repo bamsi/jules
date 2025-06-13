@@ -1,0 +1,13 @@
+.dashboard-section-container {
+  padding: 0;
+}
+
+.tab-content-container {
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  border-top: none;
+  // margin-top: -2px; // Adjust as needed based on tab styling, remove if not needed
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}

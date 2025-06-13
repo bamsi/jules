@@ -1,0 +1,77 @@
+.tabs-container {
+  background-color: #f0f2f5; // Light background for the tab bar itself
+  padding: 0 10px;
+  border-bottom: 2px solid #d1d8e0; // A subtle border at the bottom of the bar
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; // Arrange tabs in a row
+    overflow-x: auto; // Allow horizontal scrolling if many tabs
+    -ms-overflow-style: none;  // IE and Edge
+    scrollbar-width: none;  // Firefox
+    &::-webkit-scrollbar { // Chrome, Safari, Opera
+      display: none;
+    }
+
+
+    li {
+      margin-right: 5px; // Spacing between tabs
+
+      a {
+        display: block;
+        padding: 12px 20px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1em;
+        color: #4a5568; // Default tab text color (cool gray)
+        border-bottom: 3px solid transparent; // Placeholder for active indicator
+        transition: color 0.3s ease, border-bottom-color 0.3s ease, background-color 0.3s ease;
+        position: relative; // For potential pseudo-elements or effects
+        border-top-left-radius: 6px; // Slightly rounded top corners
+        border-top-right-radius: 6px;
+
+        &:hover {
+          color: #2c5282; // Darker blue on hover
+          background-color: #e2e8f0; // Light hover background
+        }
+
+        &.active-tab {
+          color: #2b6cb0; // Active tab text color (strong blue)
+          border-bottom-color: #2b6cb0; // Active tab underline color
+          // background-color: #ffffff; // Optional: active tab different background
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .tabs-container {
+    ul {
+      li {
+        a {
+          padding: 10px 15px;
+          font-size: 0.95em;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .tabs-container {
+    padding: 0 5px;
+    ul {
+      li {
+        a {
+          padding: 8px 10px;
+          font-size: 0.9em;
+        }
+      }
+    }
+  }
+}
