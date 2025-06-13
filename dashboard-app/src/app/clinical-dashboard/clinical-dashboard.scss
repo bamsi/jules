@@ -1,0 +1,13 @@
+.dashboard-section-container {
+  padding: 0; // The main content area already has padding from app.component.scss.
+}
+
+.tab-content-container {
+  padding: 20px; // Add padding around the content of the tabs
+  background-color: #fff; // Optional: give tab content a background
+  border: 1px solid #e2e8f0; // Optional: border around tab content
+  border-top: none; // Tabs container already has a bottom border from its own SCSS
+  // margin-top: -2px; // Adjust this based on final appearance of tabs border
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
