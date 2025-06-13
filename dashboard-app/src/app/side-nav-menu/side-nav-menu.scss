@@ -1,10 +1,10 @@
 :host {
   display: block;
-  height: 100vh; // Full height
-  position: fixed; // Fixed position
-  left: 0;
-  top: 0;
-  z-index: 1000; // Ensure it's above other content
+  height: 100%; // Full height of its parent (.app-body-container)
+  /* position: fixed; */ // Removed
+  /* left: 0; */ // Removed
+  /* top: 0; */ // Removed
+  /* z-index: 1000; */ // Removed
   transition: width 0.3s ease;
 }
 
@@ -27,8 +27,8 @@
     border: none;
     color: white;
     cursor: pointer;
-    display: block;
-    margin: 0 20px 20px auto; // Center the button
+    display: flex;
+    margin: 0 auto 20px 10px; // Center the button
     padding: 10px;
     font-size: 24px; // Icon size (mat-icon will inherit this or use its own sizing)
 
@@ -38,10 +38,12 @@
       // if it doesn't align as expected.
       vertical-align: middle;
     }
+    .toggle-text {
+      margin-left: 20px; // Space between icon and text
+    }
 
     &:hover {
       background-color: rgba(255,255,255,0.1);
-      border-radius: 50%;
     }
   }
 

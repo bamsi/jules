@@ -1,16 +1,25 @@
 <nav class="side-nav" [class.collapsed]="isCollapsed">
   <button class="toggle-btn" (click)="toggleCollapse()">
     <mat-icon>{{ isCollapsed ? 'menu_open' : 'menu' }}</mat-icon>
+    <span class="toggle-text" *ngIf="!isCollapsed">Menu</span>
   </button>
   <ul>
     <li>
-      <a routerLink="/clinicaldashboard" routerLinkActive="active" [title]="isCollapsed ? 'Clinical Dashboard' : null">
+      <a
+        routerLink="/clinicaldashboard"
+        routerLinkActive="active"
+        [title]="isCollapsed ? 'Clinical Dashboard' : null"
+      >
         <mat-icon>medical_services</mat-icon>
         <span class="link-text" *ngIf="!isCollapsed">Clinical Dashboard</span>
       </a>
     </li>
     <li>
-      <a routerLink="/hrdashboard" routerLinkActive="active" [title]="isCollapsed ? 'HR Dashboard' : null">
+      <a
+        routerLink="/hrdashboard"
+        routerLinkActive="active"
+        [title]="isCollapsed ? 'HR Dashboard' : null"
+      >
         <mat-icon>people</mat-icon>
         <span class="link-text" *ngIf="!isCollapsed">HR Dashboard</span>
       </a>

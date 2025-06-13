@@ -1,0 +1,76 @@
+.app-header-container {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1001; // Ensure it's above other potential fixed elements like side-nav if it were also fixed
+
+  display: flex;
+  justify-content: space-between; // Pushes title to left, date to right
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #34495e; // A complementary dark color to the side nav
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); // Subtle shadow for depth
+  height: 60px; // Fixed height for the header
+  box-sizing: border-box; // Ensure padding is included in the height
+
+  .header-title {
+    h1 {
+      margin: 0;
+      font-size: 1.5em; // Adjust as needed
+      font-weight: 500;
+    }
+  }
+
+  .header-date {
+    p {
+      margin: 0;
+      font-size: 0.9em; // Slightly smaller font for the date
+      font-weight: 300;
+    }
+  }
+}
+
+// Responsive adjustments (optional, as flexbox handles this well)
+@media (max-width: 768px) {
+  .app-header-container {
+    padding: 10px 15px; // Slightly reduce padding on smaller screens
+
+    .header-title {
+      h1 {
+        font-size: 1.3em; // Slightly smaller title
+      }
+    }
+
+    .header-date {
+      p {
+        font-size: 0.8em; // Slightly smaller date
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header-container {
+    height: auto; // Allow height to adjust if content wraps
+    flex-direction: column; // Stack title and date on very small screens
+    align-items: flex-start; // Align items to the start
+
+    // When stacked, ensure fixed properties don't cause issues with width/left if not full width
+    // However, width: 100% and left: 0 should keep it full width.
+
+    .header-title {
+      margin-bottom: 5px; // Add some space between title and date when stacked
+      h1 {
+        font-size: 1.2em;
+      }
+    }
+    .header-date {
+      align-self: flex-start; // Ensure date also aligns to start when stacked
+      p {
+        font-size: 0.8em;
+      }
+    }
+  }
+}
