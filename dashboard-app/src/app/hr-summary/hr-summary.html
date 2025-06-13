@@ -1,1 +1,12 @@
-<h2>HR Summary Works!</h2><p>Content for HR summary will go here.</p>
+<div class="embedded-dashboard-wrapper">
+  <div *ngIf="isLoading" class="loading-indicator">
+    <p>Loading HR Summary Dashboard...</p>
+    <!-- You can add a spinner here -->
+  </div>
+  <div *ngIf="errorMessage && !isLoading" class="error-message"> <!-- Ensure error message doesn't show if still loading -->
+    <p>{{ errorMessage }}</p>
+  </div>
+  <div *ngIf="!isLoading && !errorMessage" #dashboardContainer class="dashboard-container-actual">
+    <!-- Superset dashboard will be embedded here -->
+  </div>
+</div>

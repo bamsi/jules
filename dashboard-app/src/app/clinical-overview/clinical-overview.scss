@@ -1,0 +1,42 @@
+.embedded-dashboard-wrapper {
+  min-height: 600px; // Ensure it takes some space, adjust as needed
+  position: relative; // For potential absolute positioning of overlays or spinners
+  display: flex; // Use flex to center loading/error states if they are the only child
+  flex-direction: column; // Stack dashboard under loading/error if needed, though *ngIf should prevent overlap
+  justify-content: center; // Center loading/error states vertically if wrapper is the only content
+  align-items: center; // Center loading/error states horizontally
+}
+
+.dashboard-container-actual {
+  width: 100%;
+  height: 600px; // Default height, can be made responsive or dynamic
+  // Example: height: calc(100vh - 200px); // Adjust 200px for header, tabs, padding etc.
+}
+
+.loading-indicator, .error-message {
+  display: flex; // To center content within the indicator itself
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  margin: 20px; // Add some margin so it doesn't stick to edges
+  width: auto; // Let it size to content or set a max-width
+  max-width: 80%;
+}
+
+.error-message {
+  color: red;
+  border-color: red;
+  background-color: #ffebee;
+}
+
+// If the dashboard container itself should be centered when it's smaller than the wrapper
+// (e.g. if wrapper has padding from parent and dashboard has fixed smaller size)
+// This is generally not needed if dashboard-container-actual is width: 100%.
+// .dashboard-container-actual {
+//   margin: 0 auto; // Center if it has a fixed width less than 100%
+// }

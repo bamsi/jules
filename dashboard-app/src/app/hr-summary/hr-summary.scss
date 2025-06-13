@@ -1,0 +1,34 @@
+.embedded-dashboard-wrapper {
+  min-height: 600px; // Ensure it takes some space
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-container-actual {
+  width: 100%;
+  height: 600px; // Or make it dynamic
+}
+
+.loading-indicator, .error-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  margin: 20px;
+  width: auto;
+  max-width: 80%;
+}
+
+.error-message {
+  color: red;
+  border-color: red;
+  background-color: #ffebee;
+}
