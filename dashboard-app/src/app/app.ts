@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SideNavMenuComponent } from './side-nav-menu/side-nav-menu';
 import { AppHeaderComponent } from './app-header/app-header';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',

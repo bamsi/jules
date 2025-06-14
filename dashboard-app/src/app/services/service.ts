@@ -1,30 +1,27 @@
 import { Injectable } from '@angular/core';
-import jwtEncode from 'jwt-encode';
-import { environment } from '../environment/environment';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+interface SupersetTokenRequest {
+  dashboardId: string;
+}
+
+interface SupersetTokenResponse {
+  token: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class JwtService {
-  private secret = environment.secretKey;
+  private apiUrl = 'http://localhost:3000/api/guest-token'; // Replace with your Node.js backend URL
 
-  generateToken(dashboardId: string): string {
-    const payload = {
-      user: {
-        username: environment.username,
-        first_name: 'Guest',
-        last_name: 'User',
-        roles: ['Gamma'],
-      },
-      resources: [
-        {
-          type: 'dashboard',
-          id: dashboardId,
-        },
-      ],
-      rls: [],
-      exp: Math.floor(Date.now() / 1000) + 60 * 10, // 10 min expiration
-    };
+  constructor(private http: HttpClient) {}
 
-    return jwtEncode(payload, this.secret);
+  getToken(
+    requestData: SupersetTokenRequest
+  ): Observable<SupersetTokenResponse> {
+    console.log(requestData);
+    return this.http.post<SupersetTokenResponse>(this.apiUrl, requestData);
   }
 }

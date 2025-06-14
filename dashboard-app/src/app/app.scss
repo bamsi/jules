@@ -22,14 +22,6 @@ $header-height: 60px;
   height: 100%; // Fill the height of .app-body-container
   // margin-left and width transitions are handled by the rules below
   transition: margin-left 0.3s ease; // Only margin-left needs transition now
+  width: 100%;
 }
 
-// Adjust .main-content's margin based on menu state (relative to .app-body-container)
-// These rules are fine, they adjust margin-left of main-content.
-:host:not(.menu-is-collapsed) .main-content {
-  //margin-left: 250px; // Expanded width of side-nav
-}
-
-:host(.menu-is-collapsed) .main-content {
-  //margin-left: 70px; // Collapsed width of side-nav
-}

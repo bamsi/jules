@@ -1,6 +1,8 @@
 <app-app-header></app-app-header>
 <div class="app-body-container">
-  <app-side-nav-menu (collapseStateChanged)="onMenuCollapseChanged($event)"></app-side-nav-menu>
+  <app-side-nav-menu
+    (collapseStateChanged)="onMenuCollapseChanged($event)"
+  ></app-side-nav-menu>
   <main class="main-content">
     <router-outlet></router-outlet>
   </main>

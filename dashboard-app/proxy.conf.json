@@ -10,6 +10,17 @@
       "Access-Control-Allow-Methods": "POST, GET, OPTIONS"
     }
   },
+  "/api": {
+    "target": "http://102.223.7.208:8090",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": { "^/dashboard": "" },
+    "headers": {
+      "Access-Control-Allow-Origin": "http://localhost:4200",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS"
+    }
+  },
   "/static": {
     "target": "http://102.223.7.208:8090",
     "secure": false,
