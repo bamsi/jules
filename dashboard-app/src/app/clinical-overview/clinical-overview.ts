@@ -43,7 +43,7 @@ export class ClinicalOverviewComponent implements OnInit {
   loadDashboard(dashboardId: string, token: string) {
     embedDashboard({
       id: dashboardId,
-      supersetDomain: this.getDomain('ZANEMR'), // No trailing slash!
+      supersetDomain: this.getDomain('ZANEMR'), 
       mountPoint: this.container.nativeElement,
       fetchGuestToken: () => Promise.resolve(token),
       dashboardUiConfig: {
