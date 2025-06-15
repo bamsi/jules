@@ -21,31 +21,38 @@ export class ClinicalOverviewComponent implements OnInit {
     this.jwtService
       .getToken({
         dashboardId: '32da9470-486c-4319-b381-da38736e5664',
+        source: 'ZANEMR',
       })
       .subscribe({
         next: (res) => {
-          console.log(res.token);
           this.loadDashboard('32da9470-486c-4319-b381-da38736e5664', res.token);
-          // Use this token to embed Superset dashboard
         },
         error: (err) => {
           console.error('Failed to fetch token', err);
         },
       });
   }
+
+  getDomain(source: string): string {
+    const domain = environment.supersetUrl.find((url) => url.source === source);
+    if (domain) {
+      return domain.url;
+    }
+    return '';
+  }
   loadDashboard(dashboardId: string, token: string) {
     embedDashboard({
       id: dashboardId,
-      supersetDomain: environment.supersetUrl, // No trailing slash!
+      supersetDomain: this.getDomain('ZANEMR'), // No trailing slash!
       mountPoint: this.container.nativeElement,
       fetchGuestToken: () => Promise.resolve(token),
       dashboardUiConfig: {
         hideTitle: true,
         filters: { expanded: false },
+        hideChartControls: false
       },
     });
     this.enforceStyles();
-    console.log('SDK initialized in direct mode');
   }
 
   private enforceStyles() {

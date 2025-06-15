@@ -1,16 +1,17 @@
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
 /* Global Styles */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #f4f7f6;
   color: #333;
   line-height: 1.6;
@@ -18,7 +19,12 @@ body {
   /* margin: 0; is removed as it's handled by html, body */
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 500;
 }
 
@@ -32,7 +38,8 @@ a:hover {
   color: #0056b3;
 }
 
-.container { // A general utility container
+.container {
+  // A general utility container
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -43,7 +50,13 @@ a:hover {
 
 // Placeholder for Superset embedded iframe styling if direct targeting is needed
 // This might be tricky as it's an iframe, but we can style its container.
-.superset-embedded-container { // Assuming we wrap the #dashboardContainer in this
+.superset-embedded-container {
+  // Assuming we wrap the #dashboardContainer in this
   border-radius: 8px;
   overflow: hidden; // To respect border-radius of children like iframes
+}
+
+.dashboard-wrapper {
+  width: 100%;
+  height: 100%;
 }

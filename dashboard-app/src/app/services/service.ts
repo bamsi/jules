@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../environment/environment';
 
 interface SupersetTokenRequest {
   dashboardId: string;
+  source?: string;
 }
 
 interface SupersetTokenResponse {
@@ -14,14 +16,13 @@ interface SupersetTokenResponse {
   providedIn: 'root',
 })
 export class JwtService {
-  private apiUrl = 'http://localhost:3000/api/guest-token'; // Replace with your Node.js backend URL
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
   getToken(
     requestData: SupersetTokenRequest
   ): Observable<SupersetTokenResponse> {
-    console.log(requestData);
     return this.http.post<SupersetTokenResponse>(this.apiUrl, requestData);
   }
 }
