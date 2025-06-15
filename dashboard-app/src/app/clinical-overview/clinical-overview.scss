@@ -1,21 +1,41 @@
 .embedded-dashboard-wrapper {
-  min-height: 600px; // Ensure it takes some space, adjust as needed
-  position: relative; // For potential absolute positioning of overlays or spinners
-  display: flex; // Use flex to center loading/error states if they are the only child
-  flex-direction: column; // Stack dashboard under loading/error if needed, though *ngIf should prevent overlap
-  justify-content: center; // Center loading/error states vertically if wrapper is the only content
-  align-items: center; // Center loading/error states horizontally
+  display: flex; // Use flex to manage children (loading/error/dashboard)
+  flex-direction: column; // Stack children vertically
+  // This wrapper should expand to fill the space given by .tab-content-container
+  // .tab-content-container has padding, so this wrapper will be inside that padding.
+  // Let's make it fill the height of .tab-content-container.
+  // The height of .tab-content-container is determined by its parent .main-content,
+  // which is part of .app-body-container (height: calc(100vh - $header-height)).
+  // Thus, this component needs to be able to grow.
+  height: 100%;
+  width: 100%;
+  position: relative; // For absolute positioning of loading/error states if needed, though flex is fine.
 }
 
 .dashboard-container-actual {
+  flex-grow: 1; // Allow this to take all available space in the flex container
   width: 100%;
-  height: 600px; // Default height, can be made responsive or dynamic
-  // Example: height: calc(100vh - 200px); // Adjust 200px for header, tabs, padding etc.
+  // Height is implicitly handled by flex-grow if .embedded-dashboard-wrapper has a defined height or can grow.
+  // The Superset SDK will create an iframe inside this.
+  // We want that iframe to be 100% height and width of this container.
+  // This is usually default behavior for the iframe created by the SDK if the container has dimensions.
+  // Adding ::ng-deep for iframe styling if necessary, but often not needed if container is sized.
 }
 
+// Styling for iframe created by Superset SDK to ensure it fills the container.
+// Using ::ng-deep as the iframe is added dynamically by the SDK.
+:host ::ng-deep .dashboard-container-actual iframe {
+  width: 100%;
+  height: 100%;
+  border: none; // Remove default iframe border
+}
+
+
 .loading-indicator, .error-message {
-  display: flex; // To center content within the indicator itself
-  flex-direction: column;
+  // These should not cause overflow if the dashboard itself is meant to fill space.
+  // If they are shown, the dashboard container itself might not be rendered or visible.
+  display: flex;
+  flex-direction: column; // Stack content within the indicator/message box
   justify-content: center;
   align-items: center;
   padding: 40px;
@@ -23,9 +43,13 @@
   border: 1px dashed #ccc;
   border-radius: 8px;
   background-color: #f9f9f9;
-  margin: 20px; // Add some margin so it doesn't stick to edges
-  width: auto; // Let it size to content or set a max-width
-  max-width: 80%;
+  // If these are to overlay, they'd need absolute positioning
+  // For now, they occupy space when visible.
+  // The *ngIf conditions in the HTML should prevent them from coexisting with the dashboard container.
+  // Let's ensure they take up minimal space or are centered in full space if they are the only thing visible.
+  flex-grow: 1; // Allow them to take space if they are the only visible child.
+  width: 100%; // Take full width of wrapper
+  box-sizing: border-box; // Ensure padding doesn't cause overflow
 }
 
 .error-message {
@@ -33,10 +57,3 @@
   border-color: red;
   background-color: #ffebee;
 }
-
-// If the dashboard container itself should be centered when it's smaller than the wrapper
-// (e.g. if wrapper has padding from parent and dashboard has fixed smaller size)
-// This is generally not needed if dashboard-container-actual is width: 100%.
-// .dashboard-container-actual {
-//   margin: 0 auto; // Center if it has a fixed width less than 100%
-// }

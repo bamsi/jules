@@ -1,20 +1,26 @@
 .embedded-dashboard-wrapper {
-  min-height: 600px; // Ensure it takes some space
-  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
 
 .dashboard-container-actual {
+  flex-grow: 1;
   width: 100%;
-  height: 600px; // Or make it dynamic
+}
+
+// Styling for iframe created by Superset SDK
+:host ::ng-deep .dashboard-container-actual iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 .loading-indicator, .error-message {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; // Added for internal content if any
   justify-content: center;
   align-items: center;
   padding: 40px;
@@ -22,9 +28,9 @@
   border: 1px dashed #ccc;
   border-radius: 8px;
   background-color: #f9f9f9;
-  margin: 20px;
-  width: auto;
-  max-width: 80%;
+  flex-grow: 1;
+  width: 100%;
+  box-sizing: border-box; // ensure padding/border don't add to width
 }
 
 .error-message {
