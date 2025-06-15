@@ -7,11 +7,11 @@ import { embedDashboard } from '@superset-ui/embedded-sdk';
   selector: 'app-hr-dashboard',
   standalone: true,
   templateUrl: './hr-dashboard.html',
-  styleUrls: ['./hr-dashboard.scss']
+  styleUrls: ['./hr-dashboard.scss'],
 })
 export class HrDashboardComponent {
   @ViewChild('dashboardContainer') container!: ElementRef;
-  private dashboardId = 'a40570fe-4ecb-461f-9d8d-db3bcb03aa59';
+  private dashboardId = '97106a4f-3167-4eba-971a-42d0df2bcf07';
   private source = 'HRH';
   constructor(private jwtService: JwtService) {}
   ngOnInit(): void {
@@ -50,7 +50,7 @@ export class HrDashboardComponent {
       dashboardUiConfig: {
         hideTitle: true,
         filters: { expanded: false },
-        hideChartControls: false
+        hideChartControls: false,
       },
     });
     this.enforceStyles();
